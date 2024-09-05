@@ -1,0 +1,21 @@
+{
+    "name": "trepro/inspire",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/",
+            "trepro\\Inspire\\": "packages/trepro/inspire/src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "No name",
+            "email": "yup@gmail.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.0.1"
+    }
+    
+}

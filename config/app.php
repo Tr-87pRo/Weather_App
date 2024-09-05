@@ -1,5 +1,7 @@
 <?php
 
+use Fhsinchy\Inspire\Providers\InspirationProvider;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
 
@@ -159,7 +161,7 @@ return [
         /*
          * Package Service Providers...
          */
-
+        trepro\inspire\Providers\InspirationProvider::class,
         /*
          * Application Service Providers...
          */
