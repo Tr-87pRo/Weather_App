@@ -11,16 +11,16 @@ class Inspire {
             $output = '';
 
             for ($i = 0; $i < 5; $i++) {
-                $response = Http::get('https://zenquotes.io/api/random');
+                $response = Http::get('https://api.quotable.io/random');
 
                 $data = $response->json();
 
-                if (!$data || !isset($data[0]['q'], $data[0]['a'])) {
+                if (!$data || !isset($data['content'], $data['author'])) {
                     throw new Exception('Invalid API response');
                 }
 
-                $quote = $data[0]['q'];
-                $author = $data[0]['a'];
+                $quote = $data['content'];
+                $author = $data['author'];
 
                 $output .= "<blockquote style='background-color: #f9f9f9; padding: 20px; border-left: 5px solid #ccc;'>";
                 $output .= "<p>$quote</p>";
