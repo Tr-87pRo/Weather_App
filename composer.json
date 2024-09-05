@@ -10,7 +10,8 @@
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
-        "trepro/inspire": "dev-master"
+        "trepro/inspire": "dev-master",
+        "trepro/weather": "dev-master"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -28,8 +29,16 @@
             "options": {
                 "symlink": true
             }
+        },
+        {
+            "type": "path",
+            "url": "packages/trepro/weather",
+            "options": {
+                "symlink": true
+            }
         }
     ],
+    
     "autoload": {
         "psr-4": {
             "App\\": "app/",

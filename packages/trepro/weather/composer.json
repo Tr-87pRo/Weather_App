@@ -1,0 +1,25 @@
+{
+    "name": "trepro/weather",
+    "autoload": {
+        "psr-4": {
+            "trepro\\weather\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "No name",
+            "email": "yup@gmail.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.0.1"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "trepro/weather/WeatherService"
+            ]
+        }
+    },
+    "minimum-stability": "dev"
+}
