@@ -163,7 +163,7 @@ return [
         /*
          * Application Service Providers...
          */
-        trepro\weather\WeatherService::class,
+        trepro\weather\WeatherServiceProvider::class,
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
