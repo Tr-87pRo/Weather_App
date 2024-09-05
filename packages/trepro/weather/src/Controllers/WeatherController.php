@@ -8,8 +8,8 @@ use App\Http\Controllers\Controller;
 class WeatherController extends Controller {
     private $weatherService;
 
-    public function __construct() {
-        $this->weatherService = new WeatherService;
+    public function __construct(WeatherService $weatherService) {
+        $this->weatherService = $weatherService;
     }
 
     public function index() {
