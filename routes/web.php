@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use trepro\Inspire\Controllers\InspirationController;
+use trepro\Inspire\Inspire;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +19,10 @@ Route::get('/', function () {
     return view('welcome');
     
 });
-Route::get('inspire', function(trepro\Inspire\Inspire $inspire) {
+
+// Route::get('inspire', InspirationController::class);
+Route::get('inspire', function() {
+    $inspire = new Inspire;
+    
     return $inspire->justDoIt();
 });

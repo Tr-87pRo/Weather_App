@@ -1,7 +1,6 @@
 <?php
 
 use Fhsinchy\Inspire\Providers\InspirationProvider;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
 
@@ -161,7 +160,6 @@ return [
         /*
          * Package Service Providers...
          */
-        trepro\inspire\Providers\InspirationProvider::class,
         /*
          * Application Service Providers...
          */
@@ -170,6 +168,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        // trepro\inspire\Providers\InspirationProvider::class,
     ])->toArray(),
 
     /*

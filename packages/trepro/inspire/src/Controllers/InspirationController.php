@@ -1,14 +1,15 @@
 <?php
-namespace trepro\inspire\Controllers;
+namespace trepro\Inspire\Controllers;
 
 use Illuminate\Http\Request;
 use trepro\Inspire\Inspire;
 
 class InspirationController
 {
-    public function __invoke(Inspire $inspire) {
+    public function __invoke() {
+        $inspire = new Inspire;
         $quote = $inspire->justDoIt();
 
-        return $quote';
+        return view('inspire::index', compact('quote'));
     }
 }

@@ -2,10 +2,7 @@
     "name": "trepro/inspire",
     "autoload": {
         "psr-4": {
-            "App\\": "app/",
-            "Database\\Factories\\": "database/factories/",
-            "Database\\Seeders\\": "database/seeders/",
-            "trepro\\Inspire\\": "packages/trepro/inspire/src/"
+            "trepro\\Inspire\\": "src/"
         }
     },
     "authors": [
@@ -16,6 +13,13 @@
     ],
     "require": {
         "guzzlehttp/guzzle": "^7.0.1"
-    }
-    
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "trepro\\Inspire\\Providers\\InspirationProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev"
 }

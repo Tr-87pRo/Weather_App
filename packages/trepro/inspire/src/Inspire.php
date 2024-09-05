@@ -1,12 +1,14 @@
 <?php
 
-namespace trepro\inspire;
+namespace trepro\Inspire;
 
 use Illuminate\Support\Facades\Http;
 
 class Inspire {
     public function justDoIt() {
-        $response = Http::get('https://inspiration.goprogram.ai/');
+        $response = Http::get('https://zenquotes.io/api/random');
+
+        dd($response->json());
 
         return $response['quote'] . ' -' . $response['author'];
     }

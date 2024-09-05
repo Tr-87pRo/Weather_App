@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9c491b8531eec05ba41a11d9276a5749",
+    "content-hash": "72ed1fcb15317624cdf05aacb2c7f65d",
     "packages": [
         {
             "name": "brick/math",
@@ -5461,6 +5461,41 @@
             "time": "2023-12-08T13:03:43+00:00"
         },
         {
+            "name": "trepro/inspire",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "packages/trepro/inspire",
+                "reference": "e1bec40615a2b35779ef632267fbfdda1127c05c"
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^7.0.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "trepro\\Inspire\\Providers\\InspirationProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "trepro\\Inspire\\": "src/"
+                }
+            },
+            "authors": [
+                {
+                    "name": "No name",
+                    "email": "yup@gmail.com"
+                }
+            ],
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
             "name": "vlucas/phpdotenv",
             "version": "v5.6.1",
             "source": {
@@ -8191,9 +8226,11 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
-    "stability-flags": [],
-    "prefer-stable": true,
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "trepro/inspire": 20
+    },
+    "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.1"
