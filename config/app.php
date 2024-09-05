@@ -163,13 +163,13 @@ return [
         /*
          * Application Service Providers...
          */
-        trepro\weather\WeatherServiceProvider::class,
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         // trepro\inspire\Providers\InspirationProvider::class,
+        // trepro\weather\Providers\WeatherServiceProvider::class,
     ])->toArray(),
 
     /*

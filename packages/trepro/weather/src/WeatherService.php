@@ -5,10 +5,10 @@ namespace trepro\Weather;
 use Illuminate\Support\Facades\Http;
 use Exception;
 
-class Weather {
+class WeatherService {
     public function getWeather($city) {
         try {
-            $apiKey = 'YOUR_OPENWEATHERMAP_API_KEY'; // replace with your OpenWeatherMap API key
+            $apiKey = 'bd8bd51f8afa4db3e68e48e44a22d72d'; 
             $response = Http::get("http://api.openweathermap.org/data/2.5/weather?q=$city&appid=$apiKey&units=metric");
 
             $data = $response->json();

@@ -5549,7 +5549,7 @@
             "dist": {
                 "type": "path",
                 "url": "packages/trepro/weather",
-                "reference": "a71f5f0252384b2dd81e142d0e18cc891fd7eaa1"
+                "reference": "d73c1641906ff7b029da444e16e337d600a43f25"
             },
             "require": {
                 "guzzlehttp/guzzle": "^7.0.1"
@@ -5558,13 +5558,13 @@
             "extra": {
                 "laravel": {
                     "providers": [
-                        "trepro/weather/WeatherService"
+                        "trepro\\weather\\Providers\\WeatherServiceProvider"
                     ]
                 }
             },
             "autoload": {
                 "psr-4": {
-                    "trepro\\weather\\": "src/"
+                    "trepro\\Weather\\": "src/"
                 }
             },
             "authors": [

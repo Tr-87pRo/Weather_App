@@ -2,7 +2,7 @@
     "name": "trepro/weather",
     "autoload": {
         "psr-4": {
-            "trepro\\weather\\": "src/"
+            "trepro\\Weather\\": "src/"
         }
     },
     "authors": [
@@ -17,7 +17,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "trepro/weather/WeatherService"
+                "trepro\\weather\\Providers\\WeatherServiceProvider"
             ]
         }
     },

@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use trepro\Inspire\Controllers\InspirationController;
 use trepro\Inspire\Inspire;
 use trepro\Weather\Controllers\WeatherController;
 
@@ -28,8 +27,4 @@ Route::get('inspire', function() {
     return $inspire->justDoIt();
 });
 
-Route::get('weather', function() {
-    $weather = new WeatherController;
-
-    return $weather->index();
-});
+Route::get('weather', [WeatherController::class, 'index']);
