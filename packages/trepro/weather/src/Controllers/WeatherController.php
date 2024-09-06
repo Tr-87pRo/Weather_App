@@ -3,9 +3,9 @@
 namespace trepro\Weather\Controllers;
 
 use trepro\weather\WeatherService;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Controller as BaseController; 
 
-class WeatherController extends Controller {
+class WeatherController extends BaseController { 
     private $weatherService;
 
     public function __construct(WeatherService $weatherService) {
