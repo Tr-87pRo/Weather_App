@@ -41,7 +41,7 @@
             <span id="temperature"></span>
             <button class="temperature-toggle" onclick="toggleTemperatureUnit()">Switch to Fahrenheit</button>
         </p>
-        <p>Humidity: {{ $weatherData['humidity'] }}%</p>
+        <p>Humidity: {{ $weatherData['humidity'] ?? 'N/A' }}%</p>
         <p>Weather Condition: {{ $weatherData['weatherCondition'] }}</p>
     @else
         <p>Error: Unable to retrieve weather data.</p>
