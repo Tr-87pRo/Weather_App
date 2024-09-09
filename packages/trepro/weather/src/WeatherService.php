@@ -13,7 +13,7 @@ class WeatherService
     public function __construct(Client $client)
     {
         $this->client = $client;
-        $this->apiKey = env('bd8bd51f8afa4db3e68e48e44a22d72d');
+        $this->apiKey = env('OPENWEATHERMAP_API_KEY', '');
     }
 
     public function getWeather($city)

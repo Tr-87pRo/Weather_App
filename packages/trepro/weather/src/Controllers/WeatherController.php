@@ -15,9 +15,13 @@ class WeatherController extends BaseController {
     public function index() {
         $city = 'London'; 
         $weatherData = $this->weatherService->getWeather($city);
+        $temperatureUnit = 'C'; 
+        $humidity = $weatherData['humidity'] ?? null; 
         return view('weather::weather', [
             'city' => $city,
             'weatherData' => $weatherData,
+            'temperatureUnit' => $temperatureUnit, 
+            'humidity' => $humidity, 
         ]);
     }
 }

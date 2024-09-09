@@ -36,14 +36,10 @@
         </select>
     </h2>
     @if(isset($weatherData) && is_array($weatherData))
+        <input type="hidden" id="temperature-unit" value="{{ $temperatureUnit }}">
         <p>Temperature: 
-            @if($temperatureUnit == 'C')
-                {{ $weatherData['temperature'] }}°C
-                <button class="temperature-toggle" onclick="toggleTemperatureUnit()">Switch to Fahrenheit</button>
-            @else
-                {{ ($weatherData['temperature'] * 9/5) + 32 }}°F
-                <button class="temperature-toggle" onclick="toggleTemperatureUnit()">Switch to Celsius</button>
-            @endif
+            <span id="temperature"></span>
+            <button class="temperature-toggle" onclick="toggleTemperatureUnit()">Switch to Fahrenheit</button>
         </p>
         <p>Humidity: {{ $weatherData['humidity'] }}%</p>
         <p>Weather Condition: {{ $weatherData['weatherCondition'] }}</p>
@@ -53,8 +49,8 @@
 </div>
 
 <script>
-    let temperatureUnit = 'C';
     let city = 'New York'; 
+    let temperatureUnit = document.getElementById('temperature-unit').value;
 
     function updateCity(newCity) {
         city = newCity;
@@ -65,4 +61,15 @@
         temperatureUnit = temperatureUnit === 'C' ? 'F' : 'C';
         document.location.reload();
     }
+
+    function updateTemperatureDisplay() {
+        let temperature = {{ $weatherData['temperature'] }};
+        if (temperatureUnit === 'C') {
+            document.getElementById('temperature').innerHTML = temperature + '°C';
+        } else {
+            document.getElementById('temperature').innerHTML = (temperature * 9/5) + 32 + '°F';
+        }
+    }
+
+    updateTemperatureDisplay();
 </script>
