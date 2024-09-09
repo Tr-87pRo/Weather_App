@@ -16,11 +16,11 @@ class WeatherController extends BaseController {
         $weatherData = $this->weatherService->getWeather($city);
         $temperatureUnit = 'C'; 
         $humidity = $weatherData['humidity'] ?? null; 
-        $weatherData['humidity'] = $humidity; // Ensure the 'humidity' key is always present
+        $weatherData['humidity'] = $humidity; 
         $weatherCondition = $weatherData['weatherCondition'] ?? null; 
-        $weatherData['weatherCondition'] = $weatherCondition; // Ensure the 'weatherCondition' key is always present
+        $weatherData['weatherCondition'] = $weatherCondition; 
         $temperature = $weatherData['temperature'] ?? null; 
-        $weatherData['temperature'] = $temperature; // Ensure the 'temperature' key is always present
+        $weatherData['temperature'] = $temperature; 
         return view('weather::weather', [
             'city' => $city,
             'weatherData' => $weatherData,
