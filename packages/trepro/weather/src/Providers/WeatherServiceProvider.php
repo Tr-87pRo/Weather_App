@@ -16,7 +16,7 @@ class WeatherServiceProvider extends ServiceProvider
     // $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
     $this->loadViewsFrom(__DIR__.'/../views', 'weather');
     $this->publishes([
-        __DIR__.'/../config/weather.php' => config_path('weather.php'),
+        __DIR__.'/../Providers/config/weather.php' => config_path('weather.php'),
     ]);
 }
 }

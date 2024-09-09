@@ -38,7 +38,7 @@ return [
     | The API key for the weather service.
     |
     */
-    'api_key' => 'your_default_api_key',
+    'api_key' => env('OPENWEATHERMAP_API_KEY', 'null'),
 
     /*
     |--------------------------------------------------------------------------
