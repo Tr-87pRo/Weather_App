@@ -38,11 +38,11 @@
     @if(isset($weatherData) && is_array($weatherData))
         <input type="hidden" id="temperature-unit" value="{{ $temperatureUnit }}">
         <p>Temperature: 
-            <span id="temperature"></span>
+            <span id="temperature">{{ $weatherData['temperature'] ?? 'N/A' }}{{ $temperatureUnit }}</span>
             <button class="temperature-toggle" onclick="toggleTemperatureUnit()">Switch to Fahrenheit</button>
         </p>
         <p>Humidity: {{ $weatherData['humidity'] ?? 'N/A' }}%</p>
-        <p>Weather Condition: {{ $weatherData['weatherCondition'] }}</p>
+        <p>Weather Condition: {{ $weatherData['weatherCondition'] ?? 'N/A' }}</p>
     @else
         <p>Error: Unable to retrieve weather data.</p>
     @endif
