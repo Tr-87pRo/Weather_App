@@ -1,6 +1,6 @@
 <?php
 
-namespace trepro\weather;
+namespace trepro\Weather;
 
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Log;
@@ -13,11 +13,19 @@ class WeatherService
     public function __construct(Client $client)
     {
         $this->client = $client;
-        $this->apiKey = env('OPENWEATHERMAP_API_KEY', '');
+        $this->apiKey = config('weather.api_key');
     }
 
-    public function getWeather($city)
+    /**
+     * @param string $city
+     * @return array
+     */
+    public function getWeather(string $city): array
     {
+        if (empty($city)) {
+            throw new \InvalidArgumentException('City is required');
+        }
+
         try {
             $response = $this->client->get("http://api.openweathermap.org/data/2.5/weather?q=$city&appid=$this->apiKey");
             $weatherData = json_decode($response->getBody()->getContents(), true);
