@@ -1,5 +1,14 @@
 <?php
 
+/*
+|--------------------------------------------------------------------------
+| Weather Package Configuration
+|--------------------------------------------------------------------------
+|
+| This file contains the configuration options for the Weather package.
+|
+*/
+
 return [
     /*
     |--------------------------------------------------------------------------
@@ -29,7 +38,7 @@ return [
     | The API key for the weather service.
     |
     */
-    'api_key' => env('WEATHER_API_KEY', 'your_default_api_key'),
+    'api_key' => 'your_default_api_key',
 
     /*
     |--------------------------------------------------------------------------
@@ -58,6 +67,7 @@ return [
     |
     | The units to use for temperature and other measurements.
     |
+    | Supported values: metric, imperial
     */
     'units' => 'metric',
 
@@ -68,6 +78,7 @@ return [
     |
     | The language to use for the weather data.
     |
+    | Supported values: en, fr, es, etc.
     */
     'language' => 'en',
 ];
