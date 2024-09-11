@@ -115,6 +115,34 @@
     </div>
 </div>
 
+<div class="currency-calculator">   
+      <h2>Currency Calculator</h2>
+    <form>
+        <label for="amount">Amount:</label>
+        <br><br>
+        <input type="number" id="amount" name="amount" value="" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+        <br><br>
+        <label for="fromCurrency">From Currency:</label>
+        <br><br>
+        <select id="fromCurrency" name="fromCurrency" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+            @foreach($currencies as $currency)
+                <option value="{{ $currency->code }}">{{ $currency->name }} ({{ $currency->code }})</option>
+            @endforeach
+        </select>
+        <br><br>
+        <label for="toCurrency">To Currency:</label>
+        <br><br>
+        <select id="toCurrency" name="toCurrency" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+            @foreach($currencies as $currency)
+                <option value="{{ $currency->code }}">{{ $currency->name }} ({{ $currency->code }})</option>
+            @endforeach
+        </select>
+        <br>
+        <button type="submit" class="calculate-button">Calculate</button>
+    </form>
+    <p id="result"></p>
+</div>
+
 <script>
     let temperatureUnit = document.getElementById('temperature-unit').value;
 
@@ -122,4 +150,32 @@
         temperatureUnit = temperatureUnit === 'C' ? 'F' : 'C';
         document.location.href = '/weather?city={{ $city }}&temperatureUnit=' + temperatureUnit;
     }
+    
+    const apiUrl = 'https://api.nbp.pl/api/exchangerates/tables/a/';
+    let currencies = [];
+    let exchangeRates = {};
+
+    
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            currencies = data[0].rates;
+            exchangeRates = data[0].rates.reduce((acc, rate) => {
+                acc[rate.code] = rate.mid;
+                return acc;
+            }, {});
+        });
+
+    
+    document.querySelector('form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const amount = document.getElementById('amount').value;
+        const fromCurrency = document.getElementById('fromCurrency').value;
+        const toCurrency = document.getElementById('toCurrency').value;
+
+        
+        const result = (amount * exchangeRates[toCurrency]) / exchangeRates[fromCurrency];
+        document.getElementById('result').innerText = `Result: ${result.toFixed(2)} ${toCurrency}`;
+    });
 </script>
+
