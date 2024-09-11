@@ -48,7 +48,7 @@ return [
     | The API endpoint for the weather service.
     |
     */
-    'api_endpoint' => 'https://api.weather.com',
+    'api_endpoint' => 'http://api.openweathermap.org/data/2.5',
 
     /*
     |--------------------------------------------------------------------------
