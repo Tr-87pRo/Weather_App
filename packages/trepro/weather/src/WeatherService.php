@@ -55,10 +55,11 @@ class WeatherService
      * @param string $city
      * @return array
      */
-    public function getWeather(string $city): array
+    public function getWeather(string $city, string $temperatureUnit = 'C'): array
     {
         try {
-            $response = $this->client->get(config('weather.api_endpoint') . "/weather?q=$city&appid={$this->apiKey}&units=" . config('weather.units'));
+            $units = $temperatureUnit === 'C' ? 'metric' : 'imperial';
+            $response = $this->client->get(config('weather.api_endpoint') . "/weather?q=$city&appid={$this->apiKey}&units=$units");
             $weatherData = json_decode($response->getBody()->getContents(), true);
             return [
                 'temperature' => $weatherData['main']['temp'],
