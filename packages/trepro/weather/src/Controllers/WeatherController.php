@@ -29,14 +29,14 @@ class WeatherController extends BaseController
         }
     
       
-        $currencies = CurrencyModel::all();
+       // $currencies = CurrencyModel::all();
     
         return view('weather::weather', [
             'city' => $city,
             'weatherData' => $weatherData,
             'temperatureUnit' => $temperatureUnit,
             'error' => null,
-            'currencies' => $currencies,
+         //   'currencies' => $currencies,
         ]);
     }
 }
