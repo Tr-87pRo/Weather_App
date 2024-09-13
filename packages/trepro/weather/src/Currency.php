@@ -1,6 +1,6 @@
 <?php
 
-namespace trepro\weather\src;
+namespace trepro\weather;
 
 use Illuminate\Database\Eloquent\Model;
 

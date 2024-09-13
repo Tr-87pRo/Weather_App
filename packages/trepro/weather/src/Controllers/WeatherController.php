@@ -2,10 +2,10 @@
 
 namespace trepro\Weather\Controllers;
 
-use trepro\weather\WeatherService;
+use trepro\Weather\Currency as CurrencyModel;
 use App\Http\Controllers\Controller as BaseController;
 use Illuminate\Http\Request;
-use trepro\weather\src\Currency as CurrencyModel;
+use trepro\Weather\WeatherService;
 
 class WeatherController extends BaseController 
 {
