@@ -28,6 +28,7 @@ class WeatherController extends BaseController
             $weatherData[$key] = $weatherData[$key] ?? null;
         }
     
+        $forecastData = $this->weatherService->getForecast($city, $temperatureUnit);
       
        // $currencies = CurrencyModel::all();
     
@@ -36,6 +37,7 @@ class WeatherController extends BaseController
             'weatherData' => $weatherData,
             'temperatureUnit' => $temperatureUnit,
             'error' => null,
+            'forecastData' => $forecastData,
          //   'currencies' => $currencies,
         ]);
     }
