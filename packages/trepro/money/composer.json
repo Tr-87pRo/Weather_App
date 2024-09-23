@@ -1,0 +1,25 @@
+{
+    "name": "trepro/money",
+    "autoload": {
+        "psr-4": {
+            "trepro\\Money\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "No name",
+            "email": "yup@gmail.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.0.1"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "trepro\\money\\Providers\\MoneyServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev"
+}
