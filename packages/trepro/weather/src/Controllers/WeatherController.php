@@ -29,8 +29,10 @@ class WeatherController extends BaseController
         }
     
         $forecastData = $this->weatherService->getForecast($city, $temperatureUnit);
-      
-       // $currencies = CurrencyModel::all();
+        
+        if (empty($forecastData)) {
+            $forecastData = []; // or return an error message
+        }
     
         return view('weather::weather', [
             'city' => $city,
@@ -38,7 +40,6 @@ class WeatherController extends BaseController
             'temperatureUnit' => $temperatureUnit,
             'error' => null,
             'forecastData' => $forecastData,
-         //   'currencies' => $currencies,
         ]);
     }
 }

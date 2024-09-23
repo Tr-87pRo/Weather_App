@@ -22,23 +22,19 @@ class WeatherService
      */
     public function getWeather(string $city, string $temperatureUnit = 'C'): array
     {
-        try {
-            $units = $temperatureUnit === 'C' ? 'metric' : 'imperial';
-            $response = $this->client->get(config('weather.api_endpoint') . "/weather?q=$city&appid={$this->apiKey}&units=$units");
-            $weatherData = json_decode($response->getBody()->getContents(), true);
-            return [
-                'temperature' => $weatherData['main']['temp'],
-                'feels_like' => $weatherData['main']['feels_like'],
-                'temp_min' => $weatherData['main']['temp_min'],
-                'temp_max' => $weatherData['main']['temp_max'],
-                'pressure' => $weatherData['main']['pressure'],
-                'humidity' => $weatherData['main']['humidity'],
-                'description' => $weatherData['weather'][0]['description'],
-            ];
-        } catch (\Exception $e) {
-            Log::error("Error fetching weather data: " . $e->getMessage());
-            throw new \Exception("Unable to retrieve weather data: " . $e->getMessage());
-        }
+        $units = $temperatureUnit === 'C' ? 'metric' : 'imperial';
+        $response = $this->client->get(config('weather.api_endpoint') . "/weather?q=$city&appid={$this->apiKey}&units=$units");
+        $weatherData = json_decode($response->getBody()->getContents(), true);
+        
+        return [
+            'temperature' => $weatherData['main']['temp'],
+            'feels_like' => $weatherData['main']['feels_like'],
+            'temp_min' => $weatherData['main']['temp_min'],
+            'temp_max' => $weatherData['main']['temp_max'],
+            'pressure' => $weatherData['main']['pressure'],
+            'humidity' => $weatherData['main']['humidity'],
+            'description' => $weatherData['weather'][0]['description'],
+        ];
     }
 
     /**
@@ -47,28 +43,25 @@ class WeatherService
      */
     public function getForecast(string $city, string $temperatureUnit = 'C'): array
     {
-        try {
-            $units = $temperatureUnit === 'C' ? 'metric' : 'imperial';
-            $response = $this->client->get(config('weather.api_endpoint') . "/forecast?q=$city&appid={$this->apiKey}&units=$units");
-            $forecastData = json_decode($response->getBody()->getContents(), true);
-            $forecast = [];
-            foreach ($forecastData['list'] as $day) {
-                $forecast[] = [
-                    'dt' => $day['dt'],
-                    'main' => [
-                        'temp' => $day['main']['temp'],
+        $units = $temperatureUnit === 'C' ? 'metric' : 'imperial';
+        $response = $this->client->get(config('weather.api_endpoint') . "/forecast?q=$city&appid={$this->apiKey}&units=$units");
+        $forecastData = json_decode($response->getBody()->getContents(), true);
+        
+        $forecast = [];
+        foreach ($forecastData['list'] as $day) {
+            $forecast[] = [
+                'dt' => $day['dt'],
+                'main' => [
+                    'temp' => $day['main']['temp'],
+                ],
+                'weather' => [
+                    [
+                        'description' => $day['weather'][0]['description'],
                     ],
-                    'weather' => [
-                        [
-                            'description' => $day['weather'][0]['description'],
-                        ],
-                    ],
-                ];
-            }
-            return $forecast;
-        } catch (\Exception $e) {
-            Log::error("Error fetching forecast data: " . $e->getMessage());
-            throw new \Exception("Unable to retrieve forecast data: " . $e->getMessage());
+                ],
+            ];
         }
+        
+        return $forecast;
     }
 }
